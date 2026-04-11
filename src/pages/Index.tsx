@@ -2,10 +2,15 @@ import AnnouncementBar from "@/components/AnnouncementBar";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import CategoryDiscovery from "@/components/CategoryDiscovery";
+import SignatureRingSection from "@/components/SignatureRingSection";
+import BraceletSection from "@/components/BraceletSection";
 import BestSellers from "@/components/BestSellers";
+import SilverSetSection from "@/components/SilverSetSection";
 import SpotlightSection from "@/components/SpotlightSection";
 import GemstoneDiscovery from "@/components/GemstoneDiscovery";
+import StonePersonalityFinder from "@/components/StonePersonalityFinder";
 import TrustSection from "@/components/TrustSection";
+import SilverBullionSection from "@/components/SilverBullionSection";
 import GiftSection from "@/components/GiftSection";
 import ReviewsSection from "@/components/ReviewsSection";
 import BrandStory from "@/components/BrandStory";
@@ -22,10 +27,15 @@ const Index = () => {
       <main>
         <HeroSection />
         <CategoryDiscovery />
+        <SignatureRingSection />
         <BestSellers />
+        <BraceletSection />
+        <SilverSetSection />
         <SpotlightSection />
         <GemstoneDiscovery />
+        <StonePersonalityFinder />
         <TrustSection />
+        <SilverBullionSection />
         <GiftSection />
         <ReviewsSection />
         <BrandStory />
