@@ -12,6 +12,7 @@ import StonePersonalityFinder from "@/components/StonePersonalityFinder";
 import TrustSection from "@/components/TrustSection";
 import SilverBullionSection from "@/components/SilverBullionSection";
 import GiftSection from "@/components/GiftSection";
+import BespokeDesignSection from "@/components/BespokeDesignSection";
 import ReviewsSection from "@/components/ReviewsSection";
 import BrandStory from "@/components/BrandStory";
 import MagazinePreview from "@/components/MagazinePreview";
@@ -37,6 +38,7 @@ const Index = () => {
         <TrustSection />
         <SilverBullionSection />
         <GiftSection />
+        <BespokeDesignSection />
         <ReviewsSection />
         <BrandStory />
         <MagazinePreview />
