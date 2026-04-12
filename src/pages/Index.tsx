@@ -38,6 +38,7 @@ const Index = () => {
         <TrustSection />
         <SilverBullionSection />
         <GiftSection />
+        <BespokeDesignSection />
         <ReviewsSection />
         <BrandStory />
         <MagazinePreview />
