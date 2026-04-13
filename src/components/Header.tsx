@@ -3,12 +3,11 @@ import { Search, ShoppingBag, User, Menu, X, Heart, ChevronDown } from "lucide-r
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { label: "انگشتر مردانه", href: "#" },
-  { label: "انگشتر زنانه", href: "#" },
-  { label: "دستبند", href: "#" },
-  { label: "گردنبند", href: "#" },
-  { label: "سنگ‌های قیمتی", href: "#" },
-  { label: "پرفروش‌ها", href: "#" },
+  { label: "انگشتر نقره", href: "/rings" },
+  { label: "دستبند", href: "/bracelets" },
+  { label: "ست نقره", href: "/silver-sets" },
+  { label: "سنگ‌های قیمتی", href: "/gemstones" },
+  { label: "شمش نقره", href: "/bullion" },
   { label: "جدیدترین‌ها", href: "#" },
 ];
 
