@@ -7,6 +7,7 @@ if (!defined('ABSPATH')) {
 require_once get_template_directory() . '/inc/home-sections.php';
 require_once get_template_directory() . '/inc/template-tags.php';
 require_once get_template_directory() . '/inc/customizer.php';
+require_once get_template_directory() . '/inc/theme-setup.php';
 
 function persian_gem_silver_setup()
 {
