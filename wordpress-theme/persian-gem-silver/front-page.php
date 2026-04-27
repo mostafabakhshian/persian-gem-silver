@@ -1,23 +1,13 @@
-<?php
-get_header();
-?>
-<main>
-  <?php get_template_part('template-parts/home/announcement'); ?>
-  <?php get_template_part('template-parts/home/hero'); ?>
-  <?php get_template_part('template-parts/home/best-sellers'); ?>
+<?php get_header(); ?>
 
-  <?php foreach (pgs_get_home_sections() as $setting_key => $section_label) : ?>
-    <?php
-    $page = pgs_get_theme_page($setting_key);
-    if (!$page) {
-        continue;
-    }
-    get_template_part('template-parts/home/dynamic-page-section', null, [
-        'page' => $page,
-        'title' => $section_label,
-        'button_label' => 'مشاهده جزئیات',
-    ]);
-    ?>
+<main id="primary" class="site-main home" role="main">
+  <?php get_template_part('template-parts/home/hero'); ?>
+
+  <?php foreach (pgs_get_home_sections() as $slug => $label): ?>
+    <?php if (pgs_section_visible($slug)): ?>
+      <?php get_template_part('template-parts/home/' . $slug); ?>
+    <?php endif; ?>
   <?php endforeach; ?>
 </main>
+
 <?php get_footer(); ?>

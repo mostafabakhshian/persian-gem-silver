@@ -1,8 +1,6 @@
-<?php $announcement = get_theme_mod('pgs_announcement_text'); ?>
-<?php if (!empty($announcement)) : ?>
-<section class="announcement-bar" aria-label="اعلان سایت">
+<?php if (!defined('ABSPATH')) exit; ?>
+<div class="announcement-bar" role="status">
   <div class="container">
-    <?php echo esc_html($announcement); ?>
+    <span><?php echo esc_html(pgs_mod('pgs_announcement_text', 'ارسال رایگان برای سفارش‌های بالای ۳ میلیون تومان | ضمانت اصالت کالا')); ?></span>
   </div>
-</section>
-<?php endif; ?>
+</div>

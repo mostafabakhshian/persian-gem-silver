@@ -1,35 +1,20 @@
 <?php
+/**
+ * Persian Gem Silver – Theme functions
+ */
 
 if (!defined('ABSPATH')) {
     exit;
 }
 
-require_once get_template_directory() . '/inc/home-sections.php';
-require_once get_template_directory() . '/inc/template-tags.php';
-require_once get_template_directory() . '/inc/customizer.php';
-require_once get_template_directory() . '/inc/theme-setup.php';
+define('PGS_THEME_VERSION', '1.0.0');
+define('PGS_THEME_DIR', get_template_directory());
+define('PGS_THEME_URI', get_template_directory_uri());
 
-function persian_gem_silver_setup()
-{
-    add_theme_support('title-tag');
-    add_theme_support('post-thumbnails');
-    add_theme_support('custom-logo');
-    add_theme_support('html5', ['search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script']);
-
-    register_nav_menus([
-        'primary' => __('Primary Menu', 'persian-gem-silver'),
-        'footer' => __('Footer Menu', 'persian-gem-silver'),
-    ]);
-}
-add_action('after_setup_theme', 'persian_gem_silver_setup');
-
-function persian_gem_silver_assets()
-{
-    wp_enqueue_style(
-        'persian-gem-silver-style',
-        get_stylesheet_uri(),
-        [],
-        wp_get_theme()->get('Version')
-    );
-}
-add_action('wp_enqueue_scripts', 'persian_gem_silver_assets');
+require_once PGS_THEME_DIR . '/inc/helpers.php';
+require_once PGS_THEME_DIR . '/inc/theme-setup.php';
+require_once PGS_THEME_DIR . '/inc/enqueue.php';
+require_once PGS_THEME_DIR . '/inc/customizer.php';
+require_once PGS_THEME_DIR . '/inc/home-sections.php';
+require_once PGS_THEME_DIR . '/inc/woocommerce.php';
+require_once PGS_THEME_DIR . '/inc/seed-content.php';

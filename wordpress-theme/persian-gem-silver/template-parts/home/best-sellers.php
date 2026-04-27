@@ -1,39 +1,54 @@
-<?php
-$query_args = [
-    'post_type' => 'post',
-    'posts_per_page' => 4,
-    'post_status' => 'publish',
-];
-
-if (class_exists('WooCommerce')) {
-    $query_args = [
-        'post_type' => 'product',
-        'posts_per_page' => 4,
-        'post_status' => 'publish',
-        'meta_key' => 'total_sales',
-        'orderby' => 'meta_value_num',
-        'order' => 'DESC',
-    ];
-}
-
-$best_sellers = new WP_Query($query_args);
-
-if (!$best_sellers->have_posts()) {
-    return;
-}
-?>
-<section class="section">
+<?php if (!defined('ABSPATH')) exit; ?>
+<section class="section product-row">
   <div class="container">
-    <h2 class="section-title">پرفروش‌ها</h2>
-    <div class="grid">
-      <?php while ($best_sellers->have_posts()) : $best_sellers->the_post(); ?>
-        <article class="card">
-          <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-          <p><?php echo esc_html(wp_trim_words(get_the_excerpt(), 18)); ?></p>
-          <a class="card-link" href="<?php the_permalink(); ?>">مشاهده</a>
-        </article>
-      <?php endwhile; ?>
+    <div class="row-head reveal">
+      <div>
+        <p class="eyebrow">انتخاب مشتریان</p>
+        <h2 class="section-title">پرفروش‌ترین‌ها</h2>
+      </div>
+      <a class="view-all" href="<?php echo esc_url(home_url('/shop')); ?>">مشاهده همه ←</a>
+    </div>
+
+    <div class="grid grid-4">
+      <?php
+      if (function_exists('wc_get_products')) {
+          $products = wc_get_products([
+              'limit'   => 4,
+              'status'  => 'publish',
+              'orderby' => 'meta_value_num',
+              'meta_key'=> 'total_sales',
+              'order'   => 'DESC',
+          ]);
+          if (empty($products)) {
+              $products = wc_get_products(['limit' => 4, 'status' => 'publish']);
+          }
+          foreach ($products as $p) {
+              set_query_var('pgs_product', $p);
+              get_template_part('template-parts/plp/product-card');
+          }
+      } else {
+          // Fallback static cards
+          $fallbacks = [
+              ['انگشتر فیروزه طبیعی', '۲٬۸۵۰٬۰۰۰', 'mens-ring.jpg'],
+              ['دستبند نقره دست‌ساز', '۱٬۹۵۰٬۰۰۰', 'bracelet.jpg'],
+              ['گردنبند ظریف نقره', '۲٬۲۰۰٬۰۰۰', 'necklace.jpg'],
+              ['انگشتر زنانه عقیق', '۱٬۷۵۰٬۰۰۰', 'womens-ring.jpg'],
+          ];
+          foreach ($fallbacks as $f): ?>
+            <article class="pgs-product-card">
+              <a class="pc-thumb" href="<?php echo esc_url(home_url('/shop')); ?>">
+                <img src="<?php echo esc_url(pgs_img($f[2])); ?>" alt="<?php echo esc_attr($f[0]); ?>" loading="lazy">
+              </a>
+              <div class="pc-body">
+                <span class="pc-cat">جواهرات نقره</span>
+                <h3 class="pc-title"><a href="<?php echo esc_url(home_url('/shop')); ?>"><?php echo esc_html($f[0]); ?></a></h3>
+                <div class="pc-stars">★★★★★</div>
+                <div class="pc-price"><?php echo esc_html($f[1]); ?> تومان</div>
+              </div>
+            </article>
+          <?php endforeach;
+      }
+      ?>
     </div>
   </div>
 </section>
-<?php wp_reset_postdata(); ?>
